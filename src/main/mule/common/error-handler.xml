@@ -9,28 +9,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<error-handler
 		name="exp-apigee-api_Shared_Error_Handler"
 		doc:id="a79cda93-93d0-46f9-8a16-ba23a8c63236">
-		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="1fad67e0-afe7-4058-8e5a-7c67ee5a9a77" type="INPUT:INVALID_KEYWORD">
-				<ee:transform doc:name="Set Payload - Validation Error, var-httpStatus" doc:id="1d736f1f-c4b2-465e-b2ed-7781858bfe9e">
-					<ee:message>
-						<ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-{
-  "x-event-code": correlationId,	
-  "x-event-code": 9209,
-  "x-event-msg": error.detailedDescription,
-  "result": {
-    "errorType": error.errorType.namespace ++ ":" ++ error.errorType.identifier,
-    "errorDescription": error.detailedDescription
-  }
-}
-]]></ee:set-payload>
-					</ee:message>
-					<ee:variables>
-						<ee:set-variable resource="dw/var-httpStatus-400.dwl" variableName="httpStatus" />
-					</ee:variables>
-				</ee:transform>
-			</on-error-propagate>
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="c713e4a7-419e-4673-9a20-4f96dad9c99d" type="HTTP:BAD_REQUEST">
 			<ee:transform doc:name="Set Payload - http bad request,var-httpStatus" doc:id="986763fe-0d18-455c-bf02-9c8fe6fb7ef3">
 				<ee:message>
