@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<sub-flow name="proc-subcription-api-post-subcription-subflow" doc:id="b0f5cd6b-b201-4da7-a9f7-8f973b422ab0" >
+		<logger level="INFO" doc:name="START- POST/ subscription" doc:id="08aaf891-5604-4958-80d0-8cef4aa382cb" message="START- POST/ subscription"/>
+		<!-- [STUDIO:"POST /subscription"]<http:request method="GET" doc:name="POST /subscription" doc:id="ab3d4502-adaf-45c1-a65c-0ef40780623a" /> [STUDIO] -->
+		<logger level="INFO" doc:name="END - POST/ subscription" doc:id="3f5104a9-b8c7-4ce9-b841-cbb2ad82713e" message="END- POST/ subscription"/>
+	</sub-flow>
+</mule>

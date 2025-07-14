@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="impl-activation-post-activation-flow" doc:id="0cba7ae6-0857-4c57-8400-ec4cdcdc3e8f" >
+		<logger level="INFO" doc:name="START - Activation Process" doc:id="c5ee6952-df32-45b4-b1fc-9a66a8167e86" message="START - Activation Process"/>
+		<flow-ref doc:name="proc-subcription-api-post-subcription-subflow" doc:id="94ed3bde-18e4-495a-9f64-bab4e0dacd32" name="proc-subcription-api-post-subcription-subflow"/>
+		<ee:transform doc:name="Subcription API to API Response" doc:id="99695f27-58f7-47f4-a7b2-ab13110c83aa" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="END - Activation Process" doc:id="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" message="END - Activation Process"/>
+	</flow>
+</mule>
