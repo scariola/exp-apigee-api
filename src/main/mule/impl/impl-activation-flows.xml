@@ -6,8 +6,24 @@
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<flow name="impl-activation-post-activation-flow" doc:id="0cba7ae6-0857-4c57-8400-ec4cdcdc3e8f" >
 		<logger level="INFO" doc:name="START - Activation Process" doc:id="c5ee6952-df32-45b4-b1fc-9a66a8167e86" message="START - Activation Process"/>
+		<ee:transform doc:name="Payload TO Subcription API Request" doc:id="3ef70789-beaf-4223-b465-070b8a641667" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+    "transaction-id": payload.transaction_id,
+    "sms-message": payload.sms_message,
+    "msisdn": payload.sub_msisdn,
+    "sms-source-address": payload.sms_source_address,
+    "sub-device": payload.sub_device,
+    "hlprm": payload.hplmn,
+    "as-service-id": payload.as_service_id
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
 		<flow-ref doc:name="proc-subcription-api-post-subcription-subflow" doc:id="94ed3bde-18e4-495a-9f64-bab4e0dacd32" name="proc-subcription-api-post-subcription-subflow"/>
-		<ee:transform doc:name="Subcription API to API Response" doc:id="99695f27-58f7-47f4-a7b2-ab13110c83aa" >
+		<ee:transform doc:name="Subcription API Response TO  API Response" doc:id="99695f27-58f7-47f4-a7b2-ab13110c83aa" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json skipNullOn = "everywhere"
