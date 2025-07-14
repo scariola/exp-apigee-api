@@ -10,11 +10,21 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<ee:transform doc:name="Subcription API to API Response" doc:id="99695f27-58f7-47f4-a7b2-ab13110c83aa" >
 			<ee:message >
 				<ee:set-payload ><![CDATA[%dw 2.0
-output application/java
+output application/json skipNullOn = "everywhere"
 ---
-payload]]></ee:set-payload>
+{
+    "transaction_id": payload.result.'transaction-id',
+    "sub_msidn":  payload.result.msisdn,
+    "status": payload.'x-event-msg',
+    "details": {
+        "status":  payload.result.status,
+        "expiry_date":  payload.result.'expiry-date',
+        "sms_message_to_sub": payload.result.'sms-spiel'
+    }
+}]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 		<logger level="INFO" doc:name="END - Activation Process" doc:id="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" message="END - Activation Process"/>
+		<error-handler ref="exp-apigee-api_Shared_Error_Handler" />
 	</flow>
 </mule>

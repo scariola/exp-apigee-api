@@ -15,7 +15,7 @@
             </http:error-response>
         </http:listener>
         <apikit:router config-ref="exp-apigee-api-config" />
-		<error-handler ref="exp-apigee-api-Shared_Error_Handler" />
+		<error-handler ref="exp-apigee-api_APIKIT_Error_Handler" />
     </flow>
     <flow name="post:\activation:application\json:exp-apigee-api-config">
         <logger level="INFO" doc:name="START - POST/ activation" doc:id="ca72302f-9edd-4a68-8525-73dcafeaf548" />
