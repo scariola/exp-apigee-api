@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="impl-facebook-flows-suite.xml" />
+	<munit:test name="impl-facebook-post-facebook-flow-opt-in-success-test" doc:id="2d2c94a9-8c5a-45f7-b66d-e61fe1efcd83" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="5b69a08f-2453-4e97-bf69-ef9b3ffd982d" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="bd17fd9c-02bb-4294-a439-5187a6f1f8ff">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptinsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="720e2d0c-49bc-4bcb-91b3-e702dcb1ba4d" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="b0571e8c-1de9-4a34-be7f-3f4b3f637a0c" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowoptinsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="734a3fc2-f8de-4751-8c3b-19f91b7adc24" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-opt-in-dual-provision-test" doc:id="16bb751e-3581-4b20-9ea7-f7a26675f5c7" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="c83403c9-7d68-4fae-b3b8-1895e72006ca" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="5105508f-81da-45a7-901a-fe5016db57c4">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptindualprovisiontest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="806c2fde-eaef-4fbf-9d39-9d80843ce40a" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="68814728-b593-4ac8-8c2b-05c5f8038c3d" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowoptindualprovisiontest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="eab8dcb4-5b0e-4cea-8cb8-261d5e09240e" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-opt-out-success-test" doc:id="e5f8c93b-1dd3-4d6a-938a-9fd2e3814c83" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="bd5ce065-0edd-4801-952c-fea73b1d98ab" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="d02d0524-3408-4579-b06b-b9a7f11d47c3">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="f99be77e-e6d8-4fca-9651-d644b12aad60" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="a880e986-c5cd-4124-95c1-4e5e2606c609" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowoptoutsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="981c021b-335e-4371-a067-8572946303a0" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-reactiovation-success-test" doc:id="6bdd43b2-bb67-4630-9180-847aada9937d" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="581a0293-7384-4d86-a29b-9c800a839739" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="36b5f287-7312-4211-b491-fe6735e4cb04">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowreactiovationsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="4a239a20-3eca-4805-814a-bff57551650e" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="378c75e2-26b9-4831-89fb-dcff9b50334e" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowreactiovationsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="b7eb4deb-b48c-4837-a7bd-991f6588a32a" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-dual-off-success-test" doc:id="dfb1fcc2-0a1a-4d92-a858-fdec75f757c5" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="c491cde1-16be-4212-ba9b-9c0056c38567" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="bad9cf34-0af3-469c-9074-30409c7330ed">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowdualoffsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="9e5d8116-0562-4075-aa64-68f18cd13913" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="b8a2380a-029a-42b8-8cd1-fec37c03ad54" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowdualoffsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="dfd7116e-915d-41ca-afc3-77880364c955" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-opt-out-not-registered-success-test" doc:id="9d548009-fc63-4a74-90d5-c35c4da1375c" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="caf9928c-ee64-46c7-bec7-55f056c6b69b" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="2742a996-32b2-401d-86ca-598ff1c7d7b5">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowoptoutnotregisteredsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="0d1f039a-3947-4cad-bfe7-41a8175827cf" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="0740891d-3022-4bb3-9dd5-2ed60e705d0d" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowoptoutnotregisteredsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="3a2918ec-44d1-4c15-b1e1-11fe02542226" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-success-test" doc:id="1fdcb857-bef4-4669-aaff-5bab83e309dc" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="dfc6ddc0-f8d5-48ae-b7a9-858507d07f91" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="a0e3e8f7-498e-401a-a0c5-96fe82b7828a">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="7ef862d8-1a3c-42e3-8a3d-8af2e33a7054" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="3844bcb9-2cbe-4356-b019-ea13ad862475" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowbonusfbsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="f918717d-6988-490c-97a5-25e64c9ab848" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-dual-bunos-success-test" doc:id="d54c0f76-130d-4640-904d-37c0f5539542" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="95397051-865b-40b9-9060-e6969c24fd71" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="a02d2165-37ad-4505-9c10-ac6d271737ca">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbdualbunossuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="c3916ac3-a997-45dc-98e0-31292e48d80b" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="ffef97b1-01fe-40f1-8a42-aa5d1f722890" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowbonusfbdualbunossuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="ae739ded-f90b-4703-bf61-b381cc0ddbdf" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-not-eligible-success-test" doc:id="8cb42b09-5b61-45cc-bc5a-8e87ce6ec490" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="3e4f32e0-1c04-41b4-b0cc-13de20a925ae" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="b8328397-ec20-4ef8-b5ca-c08ebab60f21">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="975d94ea-500b-4002-81be-66b2517c1791" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="db7e51af-5344-4a57-8c47-aea65e27966b" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowbonusfbnoteligiblesuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="71d19a3a-a8c3-42ab-bc6f-4d4f1e5e4c71" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-postpaid-reject-success-test" doc:id="200d98b3-3789-4ad2-ba0b-a9aa973210f5" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="3c0257c6-4aae-4c29-861b-9ad7e3a399a5" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="b35338b4-10cf-41f2-8c22-b497ef51887c">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="51fb4d7a-67c5-45af-ba30-b8c2bf67a375" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="3c242170-3dfa-47dd-8500-9922753571de" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowbonusfbpostpaidrejectsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="15358412-4a9d-4cc2-a73a-535126c670fc" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-brand-unsupported-test" doc:id="1b65ef8e-3165-4cfd-aec6-029bef707f10" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="abd9ae43-54aa-41fc-9b1d-0f3a0fae9dab" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="59106b4c-e813-4e62-a8bc-48d9e2e20a54">
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="3c73db94-fecf-4fd6-946d-f7ea4dd2a262" name="impl-facebook-post-facebook-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="a01138dc-44db-4b08-8b6b-ded8b0fad725" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import implfacebookpostfacebookflowbrandunsupportedtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END- Free Facebook Process" doc:id="54f69261-6bc5-4a2f-9a24-8ce5107db24f" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

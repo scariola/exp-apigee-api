@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="exp-apigee-api-test-suite.xml" />
+	<munit:test name="post:\facebook:application\json:exp-apigee-api-config-success-test" doc:id="1755cfec-5649-4a90-8aab-d39700866837" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock impl-activation-post-activation-flow" doc:id="b345c342-82b4-46c6-91e5-33c795e54621" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="b1282e0d-4ad9-4230-aeb5-9c69b3685149" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:attributes value="#[readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\mock_attributes.dwl')]" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="589b5639-859d-4e8f-9cea-491a91b1d8dd">
+				<munit:payload value="#[output application/json --- readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\set-event_attributes.dwl')]" />
+				<munit:variables>
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://postfacebookapplicationjsonexpapigeeapiconfigsuccesstest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<flow-ref doc:name="Flow-ref to post:\facebook:application\json:exp-apigee-api-config" doc:id="94781d34-77bf-4736-8dd4-e2a6adfaf8e9" name="post:\facebook:application\json:exp-apigee-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="5624df6b-13d2-4156-9acc-59061ea7d3a6" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import postfacebookapplicationjsonexpapigeeapiconfigsuccesstest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+			<munit-tools:verify-call doc:name="Verify END - POST/ activation" doc:id="0677e4e8-46f4-4029-bf96-6f43f80abca7" processor="logger" times="1">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="a17d7d35-b0a8-41ad-832e-8d3a6e292e30" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

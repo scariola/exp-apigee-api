@@ -29,9 +29,9 @@
 		name="post:\facebook:application\json:exp-apigee-api-config">
 		<logger level="INFO" doc:name="START - POST/ activation"
 			doc:id="ca72302f-9edd-4a68-8525-73dcafeaf548" message="START - POST/ activation"/>
-		<flow-ref doc:name="impl-activation-post-activation-flow"
+		<flow-ref doc:name="impl-facebook-post-facebook-flow"
 			doc:id="b1282e0d-4ad9-4230-aeb5-9c69b3685149"
-			name="impl-activation-post-activation-flow" />
+			name="impl-facebook-post-facebook-flow" />
 		<logger level="INFO" doc:name="END - POST/ activation"
 			doc:id="a17d7d35-b0a8-41ad-832e-8d3a6e292e30"
 			message="END - POST/ activation" />

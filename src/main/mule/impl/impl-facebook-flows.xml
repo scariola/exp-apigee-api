@@ -6,11 +6,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<flow name="impl-activation-post-activation-flow"
+	<flow name="impl-facebook-post-facebook-flow"
 		doc:id="0cba7ae6-0857-4c57-8400-ec4cdcdc3e8f">
-		<logger level="INFO" doc:name="START - Activation Process"
+		<logger level="INFO" doc:name="START - Free Facebook Process"
 			doc:id="c5ee6952-df32-45b4-b1fc-9a66a8167e86"
-			message="START - Activation Process" />
+			message="START - Free Facebook Process" />
 		<ee:transform
 			doc:name="Payload TO Subcription API Request"
 			doc:id="3ef70789-beaf-4223-b465-070b8a641667">
@@ -31,6 +31,9 @@ output application/json skipNullOn = "everywhere"
 
 ]]></ee:set-payload>
 			</ee:message>
+			<ee:variables >
+				<ee:set-variable variableName="vars.originalPayload" ><![CDATA[payload]]></ee:set-variable>
+			</ee:variables>
 		</ee:transform>
 		<flow-ref
 			doc:name="proc-subcription-api-post-subcription-subflow"
@@ -55,9 +58,9 @@ output application/json skipNullOn = "everywhere"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="END - Activation Process"
+		<logger level="INFO" doc:name="END- Free Facebook Process"
 			doc:id="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88"
-			message="END - Activation Process" />
+			message="END - Free Facebook Process" />
 		<error-handler ref="exp-apigee-api_Shared_Error_Handler" />
 	</flow>
 </mule>

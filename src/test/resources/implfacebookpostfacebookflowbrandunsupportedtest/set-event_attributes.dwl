@@ -1,0 +1,30 @@
+{
+  "headers": {
+    "x-correlation-id": "123",
+    "content-type": "application/json",
+    "user-agent": "PostmanRuntime/7.44.1",
+    "accept": "*/*",
+    "cache-control": "no-cache",
+    "postman-token": "74f6a9bf-fa0d-41c9-a831-d6b6fd3d19b4",
+    "host": "localhost:8081",
+    "accept-encoding": "gzip, deflate, br",
+    "connection": "keep-alive",
+    "content-length": "216"
+  },
+  "clientCertificate": null,
+  "method": "POST",
+  "scheme": "http",
+  "queryParams": {},
+  "requestUri": "/api/facebook",
+  "queryString": "",
+  "version": "HTTP/1.1",
+  "maskedRequestPath": "/facebook",
+  "listenerPath": "/api/*",
+  "localAddress": "/127.0.0.1:8081",
+  "relativePath": "/api/facebook",
+  "uriParams": {},
+  "rawRequestUri": "/api/facebook",
+  "rawRequestPath": "/api/facebook",
+  "remoteAddress": "/127.0.0.1:50033",
+  "requestPath": "/api/facebook"
+}
