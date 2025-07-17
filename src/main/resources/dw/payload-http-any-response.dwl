@@ -2,11 +2,13 @@
 output application/json
 ---
 {
-  "x-event-code": correlationId,	
-  "x-event-code": 9101,
-  "x-event-msg": "We encountered a system issue while processing your request. Please try again later.",
-  "result": {
-    "errorType": error.errorType.namespace ++ ":" ++ error.errorType.identifier,
-    "errorDescription": error.detailedDescription
-  }
+    "transaction_id": payload.'transaction-id',
+    "sub_msidn":  payload.msisdn,
+    "status": 'fail',
+    "details": {
+        'errorType':'Unexpected system error',
+        'errorDescription': "We encountered a system issue while processing your request. Please try again later."
+    }
 }
+
+

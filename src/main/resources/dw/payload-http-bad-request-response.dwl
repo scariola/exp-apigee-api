@@ -2,11 +2,11 @@
 output application/json
 ---
 {
-  "x-event-code": correlationId,	
-  "x-event-code": 9104,
-  "x-event-msg": "Bad Request - Invalid Parameter or Request",
-  "result": {
-    "errorType": error.errorType.namespace ++ ":" ++ error.errorType.identifier,
-    "errorDescription": error.detailedDescription
-  }
+    "transaction_id": payload.'transaction-id',
+    "sub_msidn":  payload.msisdn,
+    "status": 'fail',
+    "details": {
+        'errorType':'Bad Request - Invalid Parameter or Request',
+        'errorDescription': error.detailedDescription
+    }
 }

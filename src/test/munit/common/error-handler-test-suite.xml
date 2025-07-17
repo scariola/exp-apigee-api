@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="new-test-suite.xml" />
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-bad-request-test" doc:id="9cf465be-18ce-4725-bbf8-2dc51449efc7" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="9b9f51b9-1f56-48e0-a4ba-4db8197fba19" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="0fb39bb5-9bd6-431d-97b0-d614e7f27d73" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="5fef37b4-73c2-4701-a5a5-8c4a7fe9badf" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="259872f4-669b-4d36-bfd3-a399a7ce19df" >
+						<logger level="INFO" doc:name="Logger" doc:id="6ca9a5cf-a57f-4833-95ec-08255a24781d" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:BAD_REQUEST" doc:id="3103b783-e409-45cf-8a04-3cd12f0e5d73" is="#[MunitTools::equalTo('APIKIT:BAD_REQUEST')]" expression="#[payload.result.'errorType']"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-not-found-test" doc:id="9df2c614-6f4e-4963-a5de-f835f7da9375" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="df456e45-22ea-4b31-8c99-8c05fb0f5346" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_FOUND" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="080943ae-6d8d-40ba-9d56-e426f7369412" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="7673dbf0-e797-4c84-b308-1fefcea99252" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="ba628586-2621-4270-9783-98ffc180b669" >
+						<logger level="INFO" doc:name="Logger" doc:id="a0053c21-85ed-4c43-93fc-3beb1daa5c4b" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:NOT_FOUND" doc:id="d55a5450-005f-4b73-b1f1-0c19d3cf52c4" expression="#[payload.result.'errorType']" is="#[MunitTools::equalTo('APIKIT:NOT_FOUND')]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-method-not-allowed-test" doc:id="90122200-3d8f-4f9a-987e-3e7063c10e31" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="47ca6b48-9f61-46cd-9b4e-4cdecf47dd04" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:METHOD_NOT_ALLOWED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="24f13f97-9c40-4de2-bfdc-6f0ae7300792" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="613336e9-cbfd-44bc-814a-1fff2fb498f8" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="9698f170-244f-44b9-8a22-16f1256285c4" >
+						<logger level="INFO" doc:name="Logger" doc:id="36f49463-50a2-4f26-9c37-a273662c497f" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:METHOD_NOT_ALLOWED" doc:id="8938fa76-26b3-45bc-99b5-603e6f1d0b37" expression="#[payload.result.'errorType']" is="#[MunitTools::equalTo('APIKIT:METHOD_NOT_ALLOWED')]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-not-accepted-test" doc:id="6a5ce0dd-a8db-4805-a875-ce5977081184" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="7c870ce7-a444-4ced-ba5b-a1ddaef04e05" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_ACCEPTABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="a9b79e46-d3cc-49ee-b95f-3e8e2103ec1d" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="f12255c0-ec4b-4d00-8a06-871f53a7e28d" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="f6b6634b-fc53-4fa3-a0eb-12dac6520664" >
+						<logger level="INFO" doc:name="Logger" doc:id="fef70685-31a9-40df-89cb-7714da2f45b0" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:NOT_ACCEPTABLE" doc:id="0fbfdff1-04a1-4a11-ada7-2a6f3f055c73" expression="#[payload.result.'errorType']" is="#[MunitTools::equalTo('APIKIT:NOT_ACCEPTABLE')]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-unsupported-media-type-test" doc:id="c742ea7f-9e0c-4006-8db0-303fffc89d97" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="fa80472c-7426-48ba-a4b4-392665f1feda" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:UNSUPPORTED_MEDIA_TYPE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="de62253e-771a-4302-8d44-fa332bb59ada" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="bf555d78-1dc7-4a5c-ab1f-9b1c703feef4" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="00898f62-2763-4e60-93b4-c6fea8331e3b" >
+						<logger level="INFO" doc:name="Logger" doc:id="c4d5f859-ba97-41ef-baf9-7a0965cd0060" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:UNSUPPORTED_MEDIA_TYPE" doc:id="ccc0f02b-7e08-49d0-8410-bc9500e13a5d" expression="#[payload.result.'errorType']" is="#[MunitTools::equalTo('APIKIT:UNSUPPORTED_MEDIA_TYPE')]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="exp-apigee-api-main_APIKIT_Error_Handler-apikit-not-implemented-test" doc:id="8b8b2942-20dc-4436-abc5-98b178919c36" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock exp-apigee-api-main" doc:id="0a8d3c7a-71b1-40ed-8b73-433b73d99ccc" processor="apikit:router" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="exp-apigee-api-config" attributeName="config-ref" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APIKIT:NOT_IMPLEMENTED" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<try doc:name="Try" doc:id="087fbed8-4042-4e2e-85d0-9873c6e4ad29" >
+				<flow-ref doc:name="exp-apigee-api-main" doc:id="edb1664f-02b7-4f51-9931-4445d6104a61" name="exp-apigee-api-main" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="ffdcd909-41cc-4fc5-867e-e149fb86ceb9" >
+						<logger level="INFO" doc:name="Logger" doc:id="683e7be3-c8ad-4504-b57c-e6236d662236" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert APIKIT:NOT_IMPLEMENTED" doc:id="7e4ddbc9-7e86-4d69-9e55-35f53b7126d1" expression="#[payload.result.'errorType']" is="#[MunitTools::equalTo('APIKIT:NOT_IMPLEMENTED')]" />
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

@@ -2,11 +2,11 @@
 output application/json
 ---
 {
-  "x-event-code": correlationId,	
-  "x-event-code": 9103,
-  "x-event-msg": "Connectivity Error.",
-  "result": {
-    "errorType": error.errorType.namespace ++ ":" ++ error.errorType.identifier,
-    "errorDescription": error.detailedDescription
-  }
+    "transaction_id": payload.'transaction-id',
+    "sub_msidn":  payload.msisdn,
+    "status": 'fail',
+    "details": {
+        'errorType':'Http Connectivity Error',
+        'errorDescription': error.detailedDescription
+    }
 }

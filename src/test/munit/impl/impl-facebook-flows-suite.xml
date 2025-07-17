@@ -8,7 +8,7 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="impl-facebook-flows-suite.xml" />
-	<munit:test name="impl-facebook-post-facebook-flow-opt-in-success-test" doc:id="2d2c94a9-8c5a-45f7-b66d-e61fe1efcd83" >
+	<munit:test name="impl-facebook-post-facebook-flow-opt-in-success-test" doc:id="2d2c94a9-8c5a-45f7-b66d-e61fe1efcd83">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="5b69a08f-2453-4e97-bf69-ef9b3ffd982d" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -47,7 +47,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-opt-in-dual-provision-test" doc:id="16bb751e-3581-4b20-9ea7-f7a26675f5c7" >
+	<munit:test name="impl-facebook-post-facebook-flow-opt-in-dual-provision-test" doc:id="16bb751e-3581-4b20-9ea7-f7a26675f5c7">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="c83403c9-7d68-4fae-b3b8-1895e72006ca" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -86,7 +86,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-opt-out-success-test" doc:id="e5f8c93b-1dd3-4d6a-938a-9fd2e3814c83" >
+	<munit:test name="impl-facebook-post-facebook-flow-opt-out-success-test" doc:id="e5f8c93b-1dd3-4d6a-938a-9fd2e3814c83">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="bd5ce065-0edd-4801-952c-fea73b1d98ab" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -125,7 +125,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-reactiovation-success-test" doc:id="6bdd43b2-bb67-4630-9180-847aada9937d" >
+	<munit:test name="impl-facebook-post-facebook-flow-reactiovation-success-test" doc:id="6bdd43b2-bb67-4630-9180-847aada9937d">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="581a0293-7384-4d86-a29b-9c800a839739" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -164,7 +164,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-dual-off-success-test" doc:id="dfb1fcc2-0a1a-4d92-a858-fdec75f757c5" >
+	<munit:test name="impl-facebook-post-facebook-flow-dual-off-success-test" doc:id="dfb1fcc2-0a1a-4d92-a858-fdec75f757c5">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="c491cde1-16be-4212-ba9b-9c0056c38567" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -203,7 +203,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-opt-out-not-registered-success-test" doc:id="9d548009-fc63-4a74-90d5-c35c4da1375c" >
+	<munit:test name="impl-facebook-post-facebook-flow-opt-out-not-registered-success-test" doc:id="9d548009-fc63-4a74-90d5-c35c4da1375c">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="caf9928c-ee64-46c7-bec7-55f056c6b69b" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -242,7 +242,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-success-test" doc:id="1fdcb857-bef4-4669-aaff-5bab83e309dc" >
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-success-test" doc:id="1fdcb857-bef4-4669-aaff-5bab83e309dc">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="dfc6ddc0-f8d5-48ae-b7a9-858507d07f91" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -281,7 +281,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-dual-bunos-success-test" doc:id="d54c0f76-130d-4640-904d-37c0f5539542" >
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-dual-bunos-success-test" doc:id="d54c0f76-130d-4640-904d-37c0f5539542">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="95397051-865b-40b9-9060-e6969c24fd71" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -320,7 +320,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-not-eligible-success-test" doc:id="8cb42b09-5b61-45cc-bc5a-8e87ce6ec490" >
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-not-eligible-success-test" doc:id="8cb42b09-5b61-45cc-bc5a-8e87ce6ec490">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="3e4f32e0-1c04-41b4-b0cc-13de20a925ae" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -359,7 +359,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-postpaid-reject-success-test" doc:id="200d98b3-3789-4ad2-ba0b-a9aa973210f5" >
+	<munit:test name="impl-facebook-post-facebook-flow-bonusfb-postpaid-reject-success-test" doc:id="200d98b3-3789-4ad2-ba0b-a9aa973210f5">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="3c0257c6-4aae-4c29-861b-9ad7e3a399a5" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -398,7 +398,7 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-	<munit:test name="impl-facebook-post-facebook-flow-brand-unsupported-test" doc:id="1b65ef8e-3165-4cfd-aec6-029bef707f10" >
+	<munit:test name="impl-facebook-post-facebook-flow-brand-unsupported-test" doc:id="1b65ef8e-3165-4cfd-aec6-029bef707f10">
 		<munit:behavior >
 			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="abd9ae43-54aa-41fc-9b1d-0f3a0fae9dab" processor="flow-ref">
 				<munit-tools:with-attributes >
@@ -435,6 +435,102 @@ assert_expression_payload::main({payload: payload, attributes: attributes, vars:
 					<munit-tools:with-attribute whereValue="0d9b0cd4-96ba-4d7d-adc4-87c915dd4b88" attributeName="doc:id" />
 				</munit-tools:with-attributes>
 			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-brand-exp-apigee-api_Shared_Error_Handler-bad-request-test" doc:id="7d666736-c01f-4274-9559-defc3de6235b">
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="bc41dab4-fe71-4583-a538-dba54796e769" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:BAD_REQUEST" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="42489221-e88e-4f72-9d8a-60071f7a0e55" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<try doc:name="Try" doc:id="926e310c-82be-4e93-9f5a-6899fe6fc3ae" >
+				<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="490a41cc-e4ca-4e39-9177-fd38f66fb741" name="impl-facebook-post-facebook-flow" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="7c2c9194-0b5f-477a-b224-371dd17a2f58" >
+						<logger level="INFO" doc:name="Logger" doc:id="cce91c11-f19a-426c-868d-c5ee71133adb" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="e9bf76d1-e864-4ee5-ac3e-9c07f1bc0b67" is="#[MunitTools::equalTo('Bad Request - Invalid Parameter or Request')]" expression="#[payload.details.errorType]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-brand-exp-apigee-api_Shared_Error_Handler-http-connectivity-test" doc:id="47f8eec6-ad42-464f-8382-30f626da5492" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="79f23736-b4ab-4e06-8a8a-8daff5b1487e" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="HTTP:CONNECTIVITY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="badca13b-b12f-470c-805f-6f9c18488ddf" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<try doc:name="Try" doc:id="472a7e4f-1586-4ea1-8797-23b1cfe23ec1" >
+				<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="385f0200-ef88-4ef4-9913-46aa20a0c565" name="impl-facebook-post-facebook-flow" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="6ce1858b-4b43-4f90-b0f9-cd8787e90d43" >
+						<logger level="INFO" doc:name="Logger" doc:id="76659748-b02f-4868-8566-5d5e55e00716" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="aaa6edf6-1426-4718-804c-d12cae2f17e1" expression="#[payload.details.errorType]" is="#[MunitTools::equalTo('Http Connectivity Error')]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="impl-facebook-post-facebook-flow-brand-exp-apigee-api_Shared_Error_Handler-any-test" doc:id="a0223406-5a93-4eeb-a592-b6f6fb700306" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock proc-subcription-api-post-subcription-subflow" doc:id="0c83a993-8cf3-4221-82b3-c06736990c97" processor="flow-ref" >
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="94ed3bde-18e4-495a-9f64-bab4e0dacd32" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="ANY" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<munit:set-event doc:name="Set Input" doc:id="0d1eb867-2546-466d-8bc8-6eca6e6ee2e5" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://implfacebookpostfacebookflowbrandunsupportedtest\set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+			<try doc:name="Try" doc:id="8aef73f5-22ec-487f-a0e7-c78bf3cfbb09" >
+				<flow-ref doc:name="Flow-ref to impl-facebook-post-facebook-flow" doc:id="3275e286-ded5-45fe-8b74-5ece752e7187" name="impl-facebook-post-facebook-flow" />
+				<error-handler >
+					<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="362e8098-b06e-4dd6-a1bd-cec3e26bfcb2" >
+						<logger level="INFO" doc:name="Logger" doc:id="eb498e1b-db10-4cc8-a4a5-cd01ff51c110" />
+					</on-error-continue>
+				</error-handler>
+			</try>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="81f39c0d-c5fd-4f35-8d50-c45ecb3c5613" expression="#[payload.details.errorType]" is="#[MunitTools::equalTo('Unexpected system error')]" />
 		</munit:validation>
 	</munit:test>
 
