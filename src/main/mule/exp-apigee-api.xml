@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
-    <http:listener-config name="exp-apigee-api-httpListenerConfig">
-        <http:listener-connection host="0.0.0.0" port="8081" />
-    </http:listener-config>
-    <apikit:config name="exp-apigee-api-config" api="resource::871a7b19-9f3e-4dbd-8ef4-09253a8ba1dc:exp-apigee-api:1.0.2:raml:zip:exp-apigee-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
-    <flow name="exp-apigee-api-main">
-        <http:listener config-ref="exp-apigee-api-httpListenerConfig" path="/api/*">
-            <http:response statusCode="#[vars.httpStatus default 200]">
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
-            </http:response>
-            <http:error-response statusCode="#[vars.httpStatus default 500]">
-                <http:body>#[payload]</http:body>
-                <http:headers>#[vars.outboundHeaders default {}]</http:headers>
-            </http:error-response>
-        </http:listener>
-        <apikit:router config-ref="exp-apigee-api-config" />
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
+
+
+	<flow name="exp-apigee-api-main">
+		<http:listener
+			config-ref="HTTP_Listener_Config_exp-apigee-api"
+			path="${app.path.basepath}">
+			<http:response
+				statusCode="#[vars.httpStatus default 200]">
+				<http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+			</http:response>
+			<http:error-response
+				statusCode="#[vars.httpStatus default 500]">
+				<http:body><![CDATA[#[payload]]]></http:body>
+				<http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+			</http:error-response>
+		</http:listener>
+		<apikit:router config-ref="exp-apigee-api-config" />
 		<error-handler ref="exp-apigee-api_APIKIT_Error_Handler" />
-    </flow>
-    <flow name="post:\activation:application\json:exp-apigee-api-config">
-        <logger level="INFO" doc:name="START - POST/ activation" doc:id="ca72302f-9edd-4a68-8525-73dcafeaf548" />
-		<flow-ref doc:name="impl-activation-post-activation-flow" doc:id="b1282e0d-4ad9-4230-aeb5-9c69b3685149" name="impl-activation-post-activation-flow"/>
-		<logger level="INFO" doc:name="END - POST/ activation" doc:id="a17d7d35-b0a8-41ad-832e-8d3a6e292e30" message="END - POST/ activation"/>
-		
-    </flow>
+	</flow>
+	<flow
+		name="post:\activation:application\json:exp-apigee-api-config">
+		<logger level="INFO" doc:name="START - POST/ activation"
+			doc:id="ca72302f-9edd-4a68-8525-73dcafeaf548" />
+		<flow-ref doc:name="impl-activation-post-activation-flow"
+			doc:id="b1282e0d-4ad9-4230-aeb5-9c69b3685149"
+			name="impl-activation-post-activation-flow" />
+		<logger level="INFO" doc:name="END - POST/ activation"
+			doc:id="a17d7d35-b0a8-41ad-832e-8d3a6e292e30"
+			message="END - POST/ activation" />
+
+	</flow>
 </mule>
