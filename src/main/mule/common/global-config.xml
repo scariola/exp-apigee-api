@@ -17,7 +17,7 @@ http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/sc
 			port="${http.port}" />
 	</http:listener-config>
 	<apikit:config name="exp-apigee-api-config"
-		api="resource::871a7b19-9f3e-4dbd-8ef4-09253a8ba1dc:exp-apigee-api:1.0.2:raml:zip:exp-apigee-api.raml"
+		api="resource::871a7b19-9f3e-4dbd-8ef4-09253a8ba1dc:exp-apigee-api:1.0.3:raml:zip:exp-apigee-api.raml"
 		outboundHeadersMapName="outboundHeaders"
 		httpStatusVarName="httpStatus" />
 	<configuration-properties

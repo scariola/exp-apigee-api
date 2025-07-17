@@ -26,7 +26,7 @@
 		<error-handler ref="exp-apigee-api_APIKIT_Error_Handler" />
 	</flow>
 	<flow
-		name="post:\activation:application\json:exp-apigee-api-config">
+		name="post:\facebook:application\json:exp-apigee-api-config">
 		<logger level="INFO" doc:name="START - POST/ activation"
 			doc:id="ca72302f-9edd-4a68-8525-73dcafeaf548" message="START - POST/ activation"/>
 		<flow-ref doc:name="impl-activation-post-activation-flow"
