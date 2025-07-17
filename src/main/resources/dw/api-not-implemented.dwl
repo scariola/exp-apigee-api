@@ -2,11 +2,11 @@
 output application/json
 ---
 {
-  "x-event-id":	correlationId,		
-  "x-event-code": 9108,
-  "x-event-msg": "Not implemented",
-  "result":{
-  	"errorType": error.errorType.namespace ++ ":" ++ error.errorType.identifier,
-    "errorDescription": error.detailedDescription
-  }
+    "transaction_id": vars.dt.transaction_id,
+    "sub_msidn":  vars.dt.sub_msisdn,
+    "status": 'failure',
+    "details": {
+        'errorType': "Not implemented",
+        'errorDescription': error.detailedDescription
+    }
 }

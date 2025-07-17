@@ -22,6 +22,7 @@
 				<http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
 			</http:error-response>
 		</http:listener>
+		<set-variable value="#[payload]" doc:name="data" doc:id="3a727ba2-421d-41a4-b35d-012fc4f66037" variableName="dt"/>
 		<apikit:router config-ref="exp-apigee-api-config" />
 		<error-handler ref="exp-apigee-api_APIKIT_Error_Handler" />
 	</flow>
