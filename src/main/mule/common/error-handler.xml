@@ -9,26 +9,6 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<error-handler
 		name="exp-apigee-api_Shared_Error_Handler"
 		doc:id="a79cda93-93d0-46f9-8a16-ba23a8c63236">
-		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="c713e4a7-419e-4673-9a20-4f96dad9c99d" type="HTTP:BAD_REQUEST">
-			<ee:transform doc:name="Set Payload - http bad request,var-httpStatus" doc:id="986763fe-0d18-455c-bf02-9c8fe6fb7ef3">
-				<ee:message>
-					<ee:set-payload resource="dw/payload-http-bad-request-response.dwl" />
-				</ee:message>
-				<ee:variables>
-					<ee:set-variable resource="dw/var-httpStatus-400.dwl" variableName="httpStatus" />
-				</ee:variables>
-			</ee:transform>
-		</on-error-propagate>
-		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="62d2e837-42d3-4739-a96f-26c47a1dfc21" type="HTTP:CONNECTIVITY">
-			<ee:transform doc:name="Set Payload - http connectivity,var-httpStatus" doc:id="fb875fe7-a7f8-4654-99d1-33bc026ea09d">
-				<ee:message>
-					<ee:set-payload resource="dw/payload-http-connectiviry-response.dwl" />
-				</ee:message>
-				<ee:variables>
-					<ee:set-variable resource="dw/var-httpStatus-503.dwl" variableName="httpStatus" />
-				</ee:variables>
-			</ee:transform>
-		</on-error-propagate>
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="d9d872d4-c501-44f0-87db-add2733d4d76" type="ANY">
 			<ee:transform doc:name="Set Payload - any, var-httpStatus" doc:id="db5f79b7-763a-46c8-983e-05401d194ee5">
 				<ee:message>
