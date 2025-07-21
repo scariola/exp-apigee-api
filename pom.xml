@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>871a7b19-9f3e-4dbd-8ef4-09253a8ba1dc</groupId>
-	<artifactId>exp-apigee-api-1</artifactId>
-	<version>1.0.1</version>
+	<artifactId>exp-apigee-api-1111</artifactId>
+	<version>1.0.3</version>
 	<packaging>mule-application</packaging>
 
 	<name>exp-apigee-api</name>
@@ -16,7 +16,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<app.runtime>4.9.0</app.runtime>
-		<mule.maven.plugin.version>4.3.0</mule.maven.plugin.version>
+		<mule.maven.plugin.version>4.4.0</mule.maven.plugin.version>
 		<munit.version>3.4.0</munit.version>
 		<environment>dev</environment>
 		<targetName>Cloudhub-US-East-2</targetName>
@@ -42,9 +42,11 @@
 						<environment>${environment}</environment>
 						<target>${targetName}</target>
 						<muleVersion>${muleVersion}</muleVersion>
-						<server>deployer-spectre</server>
+						<connectedAppClientId>${connectedAppClientId}</connectedAppClientId>
+						<connectedAppClientSecret>${connectedAppClientSecret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<deploymentTimeout>1200000</deploymentTimeout>
-						<applicationName>exp-apigee-api-uat</applicationName>
+						<applicationName>exp-apigee-api-test</applicationName>
 						<replicas>1</replicas>
 						<vCores>0.1</vCores>
 						<properties>
@@ -59,23 +61,7 @@
 					</cloudhub2Deployment>
 					<classifier>mule-application</classifier>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.eclipse.aether</groupId>
-						<artifactId>aether-connector-basic</artifactId>
-						<version>1.1.0</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.aether</groupId>
-						<artifactId>aether-transport-file</artifactId>
-						<version>1.1.0</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.aether</groupId>
-						<artifactId>aether-transport-http</artifactId>
-						<version>1.1.0</version>
-					</dependency>
-				</dependencies>
+
 			</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
@@ -186,7 +172,7 @@
 	</dependencies>
 
 	<repositories>
-	   <repository>
+		<repository>
 			<id>deployer-spectre</id>
 			<name>Anypoint Exchange</name>
 			<url>https://maven.anypoint.mulesoft.com/api/v3/maven</url>
